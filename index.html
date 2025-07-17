@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='UTF-8'>
+	<title>MoE Prestige Calculator</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+	<div id="monsters-of">MONSTERS OF</div>
+	<div id="etheria">ETHERIA</div>
+	<h1>Prestige Calculator</h1>
+	<div>by orionp</div>
+
+	<br>
+	<br>
+
+	<div>
+		<input type="radio" name="all-radio" id="select-etherian" onchange="document.getElementById('etherian-select-wrapper').style.display = 'block'" checked>
+		<label for="select-etherian">Select Etherian</label><br>
+		<input type="radio" name="all-radio" id="all-etherians" onchange="document.getElementById('etherian-select-wrapper').style.display = 'none'">
+		<label for="all-etherians">ALL Etherians (Godlike is very laggy)</label>
+	</div>
+
+	<div id="etherian-select-wrapper">
+		<label for="etherian">Etherian</label>
+		<select id="etherian" name="etherian" onchange="onEtherianChange()">
+			<option>Irasper</option>
+			<option>Cryoball</option>
+			<option>Boxling</option>
+			<option>Warzerd</option>
+			<option>Eletoid</option>
+			<option>Jardrix</option>
+			<option>Watchbot</option>
+			<option>Magu</option>
+			<option>Eidlon</option>
+			<option>Mabiki</option>
+			<option>Terroot</option>
+			<option>Kungafoo</option>
+			<option>Umbris</option>
+			<option>Spectrability</option>
+			<option>Salablinder</option>
+			<option>Poigon</option>
+			<option>Behero</option>
+			<option>Munstorm</option>
+			<option>Oinkoin</option>
+			<option>Lullafairy</option>
+			<option>Spookims</option>
+			<option>Honumb</option>
+			<option>Teap</option>
+			<option>Pheral</option>
+			<option>Avien</option>
+			<option>Ignititan</option>
+			<option>Kindite</option>
+			<option>Ribbomb</option>
+			<option>Snik</option>
+			<option>Florafluff</option>
+			<option>Chambrr</option>
+			<option>Lyxic</option>
+			<option>Crimortar</option>
+			<option>Lucifyce</option>
+			<option>Solareign</option>
+			<option>Minnart</option>
+			<option>Atlantitan</option>
+			<option>Kousai</option>
+			<option>Ovelin</option>
+			<option>Rabbini</option>
+			<option>Tadbowl</option>
+			<option>Cromite</option>
+			<option>Carapinch</option>
+			<option>Edgehog</option>
+			<option>Dalladoodle</option>
+			<option>Kitsakura</option>
+			<option>Flyden</option>
+			<option>Clovurr</option>
+			<option>Elekity</option>
+			<option>Wanderwood</option>
+			<option>Phytotitan</option>
+			<option>Amenby</option>
+			<option>Magmarva</option>
+			<option>Tarabi</option>
+			<option>Cachick</option>
+			<option>Egglet</option>
+			<option>Vampyro</option>
+			<option>Goudrowsy</option>
+			<option>Mariposun</option>
+			<option>Duram</option>
+			<option>Cactikid</option>
+			<option>Braybug</option>
+			<option>Growdy</option>
+			<option>Sketchop</option>
+			<option>Huskot</option>
+			<option>Phesquerade</option>
+			<option>Voltinch</option>
+			<option>Silopsis</option>
+			<option>Vacrunch</option>
+			<option>Velveal</option>
+		</select>
+		<label for="etherian" id="default-level">(Default Level: 6)</label>
+		<br>
+		<label for="starting-level">Starting Level</label>
+		<input type="number" id="starting-level" name="starting-level" value="6" min="6" max="100">
+	</div>
+
+	<br>
+	<br>
+
+	<div>
+		<label for="starting-prestige">Starting Prestige</label>
+		<input type="number" id="starting-prestige" name="starting-prestige" value="0" min="0" max="999998">
+		<br>
+		<label for="target-prestige">Target Prestige</label>
+		<input type="number" id="target-prestige" name="target-prestige" value="10" min="1" max="999999">
+		<button onclick="document.getElementById('target-prestige').value = 10">10</button>
+		<button onclick="document.getElementById('target-prestige').value = 999999">Godlike</button>
+	</div>
+
+	<br>
+	<br>
+
+	<div>
+		<input type="checkbox" id="orb" name="orb">
+		<label for="orb">Mysterious Orb</label>
+		<br>
+		<input type="checkbox" id="gamepass" name="gamepass">
+		<label for="gamepass">2x EXP Gamepass</label>
+		<br>
+		<input type="checkbox" id="rp-mode" name="rp-mode">
+		<label for="rp-mode">RP Mode</label>
+		<br>
+		<input type="number" id="friend-bonus" name="friend-bonus" min="1" max="1.25" step="0.05" value="1.00">
+		<label for="friend-bonus">Friend Bonus</label>
+	</div>
+
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<button onclick="calculate()" id="calculate-button">Calculate!</button>
+
+	<br>
+	<br>
+
+	<p id="output"></p>
+	<p id="total"></p>
+	<button onclick="clearFunc()" id="clear-button" style="display: none;">Clear</button>
+
+	<script src="script.js"></script>
+</body>
+</html>
