@@ -213,9 +213,9 @@ function initializeSelectOptions() {
 	addOptionsToSelect(attackingItemNames, 'attacking-etherian-item');
 
 	const defendingItemNames = [
-		'20% Resistance (Walnut Shield, Frosted Snowglobe)',
-		'15% Resistance (Laurel Crown)',
-		'20% Weakness (Walnut Shield)'
+		'Walnut Shield',
+		'20% Resistance (Frosted Snowglobe)',
+		'15% Resistance (Laurel Crown)'
 	]
 	addOptionsToSelect(defendingItemNames, 'defending-etherian-item');
 
@@ -461,11 +461,19 @@ function calculateDamage() {
 	}
 	if (defendingEtherianItem != '-') {
 		const table = {
-			'20% Resistance (Walnut Shield, Frosted Snowglobe)': 0.8,
-			'15% Resistance (Laurel Crown)': 0.85,
-			'20% Weakness (Walnut Shield)': 1.2
+			'Walnut Shield': 1,
+			'20% Resistance (Frosted Snowglobe)': 0.8,
+			'15% Resistance (Laurel Crown)': 0.85
 		}
 		damageMultipliers *= table[defendingEtherianItem];
+	}
+	if (defendingEtherianItem == 'Walnut Shield') {
+		if (attackingMoveInfo['category'] == 'Physical') {
+			damageMultipliers *= 0.8;
+		}
+		if (attackingMoveInfo['type'] == 'Fire') {
+			damageMultipliers *= 1.2;
+		}
 	}
 
 	if (weather != '-') {
@@ -508,9 +516,9 @@ function calculateDamage() {
 	}
 	if (defendingEtherianBoosts != 0) {
 		if (defendingEtherianBoosts > 0) {
-			defense = Math.round(offense*(1+defendingEtherianBoosts*0.2));
+			defense = Math.round(defense*(1+defendingEtherianBoosts*0.2));
 		} else {
-			defense = Math.round(offense*(1+defendingEtherianBoosts*0.1));
+			defense = Math.round(defense*(1+defendingEtherianBoosts*0.1));
 		}
 	}
 
