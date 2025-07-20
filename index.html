@@ -2,150 +2,318 @@
 <html lang='en'>
 <head>
 	<meta charset='UTF-8'>
-	<title>MoE Prestige Calculator</title>
+	<title>MoE Utilities</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="icon" type="image/x-icon" href="icon.png">
 </head>
 <body>
 
-	<div id="monsters-of">MONSTERS OF</div>
-	<div id="etheria">ETHERIA</div>
-	<h1>Prestige Calculator</h1>
-	<div>by orionp</div>
+	<p>
+		<a onclick="showDamageCalculator()">Damage Calculator</a>
+		<a onclick="showPrestigeCalculator()">Prestige Calculator</a>
+	</p>
 
-	<br>
-	<br>
+	<div id="outer-wrapper">
+		<div id="monsters-of">MONSTERS OF</div>
+		<div id="etheria">ETHERIA</div>
+		<h1>Utilities</h1>
+		<div>by orionp</div>
 
-	<div>
-		<input type="radio" name="all-radio" id="select-etherian" onchange="document.getElementById('etherian-select-wrapper').style.display = 'block'" checked>
-		<label for="select-etherian">Select Etherian</label><br>
-		<input type="radio" name="all-radio" id="all-etherians" onchange="document.getElementById('etherian-select-wrapper').style.display = 'none'">
-		<label for="all-etherians">ALL Etherians (Godlike is very laggy)</label>
+		<br>
+		<br>
+
+		<div id="damage-calculator-wrapper">
+			<div id="damage-calculator-style-wrapper">
+
+				<div id="attacking-and-defending-wrapper">
+					<div id="attacking-etherian-wrapper">
+						<p>Attacker</p>
+
+						<div class="select-and-label-wrapper">
+							<label for="attacking-etherian">Etherian</label>
+							<select id="attacking-etherian" name="attacking-etherian" onchange="dmgOnEtherianChange('attacking')">
+								<option>-</option>
+							</select>
+						</div>
+
+						<div class="select-and-label-wrapper-type">
+							<label for="attacking-etherian-type-1">Types</label>
+							<div>
+								<select id="attacking-etherian-type-1" name="attacking-etherian-type-1">
+									<option>-</option>
+								</select>
+								<select id="attacking-etherian-type-2" name="attacking-etherian-type-2">
+									<option>-</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="attacking-etherian-ability">Ability</label>
+							<select id="attacking-etherian-ability" name="attacking-etherian-ability">
+								<option>-</option>
+							</select>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="attacking-etherian-item">Item</label>
+							<select id="attacking-etherian-item" name="attacking-etherian-item">
+								<option>-</option>
+							</select>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="attacking-etherian-stat-changes">Offensive Boosts</label>
+							<input type="number" id="attacking-etherian-stat-changes" name="attacking-etherian-stat-changes" min="-5" max="5" value="0">
+						</div>
+
+						<br>
+
+						<div class="select-and-label-wrapper">
+							<div>
+								<input type="radio" name="move-radio" id="learnset" checked onchange="dmgOnEtherianChange('attacking')">
+								<label for="learnset">Learnset</label><br>
+							</div>
+							<div>
+								<input type="radio" name="move-radio" id="all-moves" onchange="dmgOnEtherianChange('attacking')">
+								<label for="all-moves">All Moves</label>
+							</div>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="attacking-etherian-move">Move</label>
+							<select id="attacking-etherian-move" name="attacking-etherian-move" onchange="onMoveChange()">
+								<option>-</option>
+							</select>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="attacking-etherian-move-type">Move Type</label>
+							<select id="attacking-etherian-move-type" name="attacking-etherian-move-type">
+								<option>-</option>
+							</select>
+						</div>
+					</div>
+
+
+					<div id="defending-etherian-wrapper">
+						<p>Defender</p>
+
+						<div class="select-and-label-wrapper">
+							<label for="defending-etherian">Etherian</label>
+							<select id="defending-etherian" name="defending-etherian" onchange="dmgOnEtherianChange('defending')">
+								<option>-</option>
+							</select>
+						</div>
+
+						<div class="select-and-label-wrapper-type">
+							<label for="defending-etherian-type-1">Types</label>
+							<div>
+								<select id="defending-etherian-type-1" name="defending-etherian-type-1">
+									<option>-</option>
+								</select>
+								<select id="defending-etherian-type-2" name="defending-etherian-type-2">
+									<option>-</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="defending-etherian-ability">Ability</label>
+							<select id="defending-etherian-ability" name="defending-etherian-ability">
+								<option>-</option>
+							</select>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="defending-etherian-item">Item</label>
+							<select id="defending-etherian-item" name="defending-etherian-item">
+								<option>-</option>
+							</select>
+						</div>
+
+						<div class="select-and-label-wrapper">
+							<label for="defending-etherian-stat-changes">Defensive Boosts</label>
+							<input type="number" id="defending-etherian-stat-changes" name="defending-etherian-stat-changes" min="-5" max="5" value="0">
+						</div>
+
+					</div>
+				</div>
+
+				<br>
+
+				<div>
+					<label for="weather">Weather</label>
+					<select id="weather" name="weather">
+						<option>-</option>
+					</select>
+				</div>
+
+				<div>
+					<label for="critical-hit">Critical Hit</label>
+					<input type="checkbox" id="critical-hit" name="critical-hit">
+				</div>
+
+				<br>
+				<br>
+				<br>
+				<br>
+
+				<button onclick="calculateDamage()" id="damage-calculate-button" class="calculate-button">Calculate!</button>
+
+				<br>
+				<br>
+
+				<p id="damage-output"></p>
+				<p id="damage-total"></p>
+				<button onclick="dmgClearFunc()" id="damage-clear-button" style="display: none;">Clear</button>
+			</div>
+		</div>
+
+
+
+
+
+		<div id="prestige-calculator-wrapper" style="display: none;">
+			<div id="prestige-calculator-style-wrapper">
+				<div>
+					<input type="radio" name="all-radio" id="select-etherian" onchange="document.getElementById('etherian-select-wrapper').style.display = 'block'" checked>
+					<label for="select-etherian">Select Etherian</label><br>
+					<input type="radio" name="all-radio" id="all-etherians" onchange="document.getElementById('etherian-select-wrapper').style.display = 'none'">
+					<label for="all-etherians">ALL Etherians (Godlike is very laggy)</label>
+				</div>
+
+				<div id="etherian-select-wrapper">
+					<label for="etherian">Etherian</label>
+					<select id="etherian" name="etherian" onchange="onEtherianChange()">
+						<option>Irasper</option>
+						<option>Cryoball</option>
+						<option>Boxling</option>
+						<option>Warzerd</option>
+						<option>Eletoid</option>
+						<option>Jardrix</option>
+						<option>Watchbot</option>
+						<option>Magu</option>
+						<option>Eidlon</option>
+						<option>Mabiki</option>
+						<option>Terroot</option>
+						<option>Kungafoo</option>
+						<option>Umbris</option>
+						<option>Spectrability</option>
+						<option>Salablinder</option>
+						<option>Poigon</option>
+						<option>Behero</option>
+						<option>Munstorm</option>
+						<option>Oinkoin</option>
+						<option>Lullafairy</option>
+						<option>Spookims</option>
+						<option>Honumb</option>
+						<option>Teap</option>
+						<option>Pheral</option>
+						<option>Avien</option>
+						<option>Ignititan</option>
+						<option>Kindite</option>
+						<option>Ribbomb</option>
+						<option>Snik</option>
+						<option>Florafluff</option>
+						<option>Chambrr</option>
+						<option>Lyxic</option>
+						<option>Crimortar</option>
+						<option>Lucifyce</option>
+						<option>Solareign</option>
+						<option>Minnart</option>
+						<option>Atlantitan</option>
+						<option>Kousai</option>
+						<option>Ovelin</option>
+						<option>Rabbini</option>
+						<option>Tadbowl</option>
+						<option>Cromite</option>
+						<option>Carapinch</option>
+						<option>Edgehog</option>
+						<option>Dalladoodle</option>
+						<option>Kitsakura</option>
+						<option>Flyden</option>
+						<option>Clovurr</option>
+						<option>Elekity</option>
+						<option>Wanderwood</option>
+						<option>Phytotitan</option>
+						<option>Amenby</option>
+						<option>Magmarva</option>
+						<option>Tarabi</option>
+						<option>Cachick</option>
+						<option>Egglet</option>
+						<option>Vampyro</option>
+						<option>Goudrowsy</option>
+						<option>Mariposun</option>
+						<option>Duram</option>
+						<option>Cactikid</option>
+						<option>Braybug</option>
+						<option>Growdy</option>
+						<option>Sketchop</option>
+						<option>Huskot</option>
+						<option>Phesquerade</option>
+						<option>Voltinch</option>
+						<option>Silopsis</option>
+						<option>Vacrunch</option>
+						<option>Velveal</option>
+					</select>
+					<label for="etherian" id="default-level">(Default Level: 6)</label>
+					<br>
+					<label for="starting-level">Starting Level</label>
+					<input type="number" id="starting-level" name="starting-level" value="6" min="6" max="100">
+				</div>
+
+				<br>
+				<br>
+
+				<div>
+					<label for="starting-prestige">Starting Prestige</label>
+					<input type="number" id="starting-prestige" name="starting-prestige" value="0" min="0" max="999998">
+					<br>
+					<label for="target-prestige">Target Prestige</label>
+					<input type="number" id="target-prestige" name="target-prestige" value="10" min="1" max="999999">
+					<button onclick="document.getElementById('target-prestige').value = 10">10</button>
+					<button onclick="document.getElementById('target-prestige').value = 999999">Godlike</button>
+				</div>
+
+				<br>
+				<br>
+
+				<div>
+					<input type="checkbox" id="orb" name="orb">
+					<label for="orb">Mysterious Orb</label>
+					<br>
+					<input type="checkbox" id="gamepass" name="gamepass">
+					<label for="gamepass">2x EXP Gamepass</label>
+					<br>
+					<input type="checkbox" id="rp-mode" name="rp-mode">
+					<label for="rp-mode">RP Mode</label>
+					<br>
+					<input type="number" id="friend-bonus" name="friend-bonus" min="1" max="1.25" step="0.05" value="1.00">
+					<label for="friend-bonus">Friend Bonus</label>
+				</div>
+
+				<br>
+				<br>
+				<br>
+				<br>
+
+				<button onclick="calculate()" id="calculate-button" class="calculate-button">Calculate!</button>
+
+				<br>
+				<br>
+
+				<p id="output"></p>
+				<p id="total"></p>
+				<button onclick="clearFunc()" id="clear-button" style="display: none;">Clear</button>
+			</div>
+		</div>
 	</div>
 
-	<div id="etherian-select-wrapper">
-		<label for="etherian">Etherian</label>
-		<select id="etherian" name="etherian" onchange="onEtherianChange()">
-			<option>Irasper</option>
-			<option>Cryoball</option>
-			<option>Boxling</option>
-			<option>Warzerd</option>
-			<option>Eletoid</option>
-			<option>Jardrix</option>
-			<option>Watchbot</option>
-			<option>Magu</option>
-			<option>Eidlon</option>
-			<option>Mabiki</option>
-			<option>Terroot</option>
-			<option>Kungafoo</option>
-			<option>Umbris</option>
-			<option>Spectrability</option>
-			<option>Salablinder</option>
-			<option>Poigon</option>
-			<option>Behero</option>
-			<option>Munstorm</option>
-			<option>Oinkoin</option>
-			<option>Lullafairy</option>
-			<option>Spookims</option>
-			<option>Honumb</option>
-			<option>Teap</option>
-			<option>Pheral</option>
-			<option>Avien</option>
-			<option>Ignititan</option>
-			<option>Kindite</option>
-			<option>Ribbomb</option>
-			<option>Snik</option>
-			<option>Florafluff</option>
-			<option>Chambrr</option>
-			<option>Lyxic</option>
-			<option>Crimortar</option>
-			<option>Lucifyce</option>
-			<option>Solareign</option>
-			<option>Minnart</option>
-			<option>Atlantitan</option>
-			<option>Kousai</option>
-			<option>Ovelin</option>
-			<option>Rabbini</option>
-			<option>Tadbowl</option>
-			<option>Cromite</option>
-			<option>Carapinch</option>
-			<option>Edgehog</option>
-			<option>Dalladoodle</option>
-			<option>Kitsakura</option>
-			<option>Flyden</option>
-			<option>Clovurr</option>
-			<option>Elekity</option>
-			<option>Wanderwood</option>
-			<option>Phytotitan</option>
-			<option>Amenby</option>
-			<option>Magmarva</option>
-			<option>Tarabi</option>
-			<option>Cachick</option>
-			<option>Egglet</option>
-			<option>Vampyro</option>
-			<option>Goudrowsy</option>
-			<option>Mariposun</option>
-			<option>Duram</option>
-			<option>Cactikid</option>
-			<option>Braybug</option>
-			<option>Growdy</option>
-			<option>Sketchop</option>
-			<option>Huskot</option>
-			<option>Phesquerade</option>
-			<option>Voltinch</option>
-			<option>Silopsis</option>
-			<option>Vacrunch</option>
-			<option>Velveal</option>
-		</select>
-		<label for="etherian" id="default-level">(Default Level: 6)</label>
-		<br>
-		<label for="starting-level">Starting Level</label>
-		<input type="number" id="starting-level" name="starting-level" value="6" min="6" max="100">
-	</div>
-
-	<br>
-	<br>
-
-	<div>
-		<label for="starting-prestige">Starting Prestige</label>
-		<input type="number" id="starting-prestige" name="starting-prestige" value="0" min="0" max="999998">
-		<br>
-		<label for="target-prestige">Target Prestige</label>
-		<input type="number" id="target-prestige" name="target-prestige" value="10" min="1" max="999999">
-		<button onclick="document.getElementById('target-prestige').value = 10">10</button>
-		<button onclick="document.getElementById('target-prestige').value = 999999">Godlike</button>
-	</div>
-
-	<br>
-	<br>
-
-	<div>
-		<input type="checkbox" id="orb" name="orb">
-		<label for="orb">Mysterious Orb</label>
-		<br>
-		<input type="checkbox" id="gamepass" name="gamepass">
-		<label for="gamepass">2x EXP Gamepass</label>
-		<br>
-		<input type="checkbox" id="rp-mode" name="rp-mode">
-		<label for="rp-mode">RP Mode</label>
-		<br>
-		<input type="number" id="friend-bonus" name="friend-bonus" min="1" max="1.25" step="0.05" value="1.00">
-		<label for="friend-bonus">Friend Bonus</label>
-	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<button onclick="calculate()" id="calculate-button">Calculate!</button>
-
-	<br>
-	<br>
-
-	<p id="output"></p>
-	<p id="total"></p>
-	<button onclick="clearFunc()" id="clear-button" style="display: none;">Clear</button>
+	
 
 	<script src="script.js"></script>
+	<script src="damage-calculator.js"></script>
+	<script src="prestige-calculator.js"></script>
 </body>
 </html>

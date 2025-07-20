@@ -1,6 +1,9 @@
 body {
 	font-family: Arial;
 	background: black;
+}
+
+#outer-wrapper, #prestige-calculator-style-wrapper, #damage-calculator-style-wrapper {
 	display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,7 +13,49 @@ p, label, h1 {
 	color: #E6E6E6;
 }
 
-#calculate-button {
+a {
+	cursor: pointer;
+	margin-right: 50px;
+}
+
+button:hover {
+	background-color: lightgray;
+	cursor: pointer;
+}
+
+#attacking-and-defending-wrapper {
+	display: flex;
+}
+
+#attacking-etherian-wrapper, #defending-etherian-wrapper {
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 30px 0px 30px;
+}
+
+.select-and-label-wrapper, .select-and-label-wrapper-type {
+	display: flex;
+    flex-direction: row;
+    width: 216px;
+    justify-content: space-between;
+    margin: 2px;
+}
+.select-and-label-wrapper select {
+	width: 128px;
+}
+.select-and-label-wrapper-type {
+    margin-top: 5px;
+}
+.select-and-label-wrapper-type select {
+	width: 61.7px;
+}
+
+.end-boost {
+	margin-top: auto;
+}
+
+.calculate-button {
 	width: 132px;
     height: 50px;
     font-size: 1.5em;
@@ -31,5 +76,5 @@ p, label, h1 {
 }
 
 h1 {
-	margin-top: 0px;
+	margin-top: 5px;
 }
