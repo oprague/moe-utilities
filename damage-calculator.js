@@ -76,7 +76,7 @@ function initializeSelectOptions() {
 	    'Phesquerade',
 	    'Galvant',
 	    'Silopsis',
-	    'Vacrunch',
+	    'Bascurus',
 	    'Shogong',
 
 	    'Irasper',
@@ -148,7 +148,7 @@ function initializeSelectOptions() {
 	    'Huskot',
 	    'Snapalm',
 	    'Voltinch',
-	    'Bascurus',
+	    'Vacrunch',
 	    'Velveal',
 	    'Samuring'
 	]
